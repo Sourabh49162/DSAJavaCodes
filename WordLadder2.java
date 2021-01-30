@@ -10,7 +10,7 @@ class WordLadder2 {
         if(distance == 0){
             return ans;
         }
-        // System.out.println(childNodes);
+        System.out.println(childNodes);
         ArrayList<String> path = new ArrayList<>();
         path.add(beginWord);
         dfs(beginWord, endWord, wordList, path); 
@@ -38,6 +38,9 @@ class WordLadder2 {
         if(!wordList.contains(endWord)){
             return transformations;
         }
+        if(wordList.contains(beginWord)){
+            wordList.remove(beginWord);
+        }
         Queue<String> queue = new LinkedList<>();
         queue.add(beginWord);
         while(queue.size() != 0){
@@ -60,6 +63,7 @@ class WordLadder2 {
                     }
                 }
                 childNodes.put(word, nodes);
+                wordList.addAll(nodes);
                 level--;
             }
         }

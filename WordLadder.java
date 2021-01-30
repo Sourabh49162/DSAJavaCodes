@@ -4,6 +4,9 @@ class WordLadder {
         if(!wordList.contains(endWord)){
             return transformations;
         }
+        if(wordList.contains(beginWord)){
+            wordList.remove(beginWord);
+        }
         Queue<String> queue = new LinkedList<>();
         queue.add(beginWord);
         while(queue.size() != 0){
